@@ -1,0 +1,114 @@
+# basics
+set realname = "Daniel Edgecombe"
+set from = "daniel.edgecombe@salmat.com.au"
+set signature = ~/.signature
+set alias_file = ~/.mutt/aliases   # address aliases
+source $alias_file                 # read them in
+set reverse_alias                  # use names in alias file rather than raw from address
+set header_cache = ~/.mutt/hcache  # mail header cache
+set hdrs                           # add my_hdr lines
+set allow_8bit                     # don't fuck around with the bits
+set delete = yes                   # don't prompt for deletion
+set copy = yes                     # include copy of sent mail (see set record)
+set edit_headers = yes             # let me edit headers before sending
+set editor="vim -c '+/^$'"
+set forward_quote
+set include
+set indent_str = "> "
+set tilde                          # pager fills out blank lines with ~
+set honor_followup_to = ask-yes    # honor the Mail-Followup-To header when group-replying
+set sort = threads                 # default sort messages by thread
+set sort_browser=reverse-date      # showing mbox list default to newest first
+set sort_aux = last-date-received  # showing threads with yougest message last
+set beep_new
+
+set sidebar_width = 35
+set sidebar_visible=yes 
+set sidebar_delim = '|'
+
+# format string settings
+set attribution    = "On %d, %n (%a) wrote:"
+set forward_format = "Fwd: [%a: %s]"
+set pager_format   = "%S [%C/%T] %n (%l) %s"
+#set quote_regexp   = "^ *[a-zA-Z]*[]>|}()%:=-][]>|}():=-]*"
+set status_format  = "[%r] %h %f (%s) [%M/%m] [N=%n,*=%t,post=%p,new=%b]" 
+set index_format   = "%4C %Z %{%b %d} %-15.15F (%4l) %s"
+set pager_index_lines=10
+
+# imap/mail-server shit
+set folder = imap://mel0mxs02lp/   # imap server
+set imap_user = edgecomd           # imap username
+set spoolfile = +mail
+set postponed = +Drafts
+set record = "+Sent Items"
+mailboxes = +mail
+unset imap_passive
+set imap_check_subscribed
+set imap_keepalive = 300
+set mail_check = 60
+set timeout = 15
+set net_inc = 5
+set sendmail = "/usr/bin/esmtp"
+set use_envelope_from = yes
+set query_command = "~/bin/mutt-ldap.pl '%s'"
+
+bind editor "\t" complete-query
+bind index { sidebar-prev
+bind index } sidebar-next
+bind index | sidebar-open
+bind pager { sidebar-prev
+bind pager } sidebar-next
+bind pager | sidebar-open
+
+# headers
+my_hdr X-Disclaimer: All opinions expressed are my own, not Salmat's.
+
+
+# mime shizzery
+auto_view application/zip
+auto_view application/x-gzip
+auto_view application/x-gunzip
+auto_view application/octet-stream
+auto_view application/x-zip-compressed
+auto_view application/x-tar-gz
+auto_view application/msword
+auto_view application/x-perl
+auto_view application/x-sh
+auto_view application/x-tcl
+auto_view application/RTF
+auto_view text/html
+auto_view text/x-vcard
+
+alternative_order text/enriched text/plain text
+
+
+# colors
+source /home/edgy/.mutt/colors
+#color attachment red default    # any attachments
+#color error brightwhite red     # mutt error messages
+#color hdrdefault cyan default   # header colors
+#color indicator black yellow    # arrow or bar for current item in a menu
+#color markers red default       # the "+" markers at the beginning of wrapped lines in the pager
+#color message brightred default # informational messages
+#color normal white default      # normal non-quoted text
+#color quoted blue default       # text matching $quote_regexp in the body of a message
+#color search magenta default    # highlighting of words in the pager
+#color signature blue default    # any text beneath the signature line
+#color status brightgreen blue   # mode lines for information
+#color tilde brightblack default # the "~" used to pad blank lines in the pager
+#color tree color9 default        # thread trees
+#
+#color body brightgreen default "(http|ftp)://[^ \"\t\r\n]*" # http/ftp addresses
+#color body brightgreen default "[-a-z_0-9.]+@[-a-z_0-9.]+"  # email addresses
+#color header brightcyan default "^(From|Subject):"          # important headers
+#
+#color index brightblack default ~D  # deleted
+#color index yellow default ~T       # tagged
+#color index cyan default ~Q         # replied
+#color index green default ~p        # to me
+#color index red default ~F          # flagged
+#color index brightwhite default ~N          # new
+
+
+# version on startup
+push V
