@@ -8,7 +8,6 @@ source ~/.colours
 function hc() {
     herbstclient "$@"
 }
-
 hc emit_hook reload
 
 
@@ -139,3 +138,9 @@ for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     $panel $monitor &
 done
 
+# find the panel
+conky=~/.conkyrc
+[ -f "$conky" ]
+    # start it on each monitor
+    $conky  &
+done

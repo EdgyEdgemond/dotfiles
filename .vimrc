@@ -44,7 +44,8 @@ set tabstop=4
 set smarttab
 set scrolloff=999
 let mapleader=","
-let &colorcolumn=join(range(81,999),",")
+"let &colorcolumn=join(range(81,999),",")
+set colorcolumn=81
 
 " backups
 set noswapfile

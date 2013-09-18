@@ -60,16 +60,13 @@ alias ls="ls --color=auto --human-readable --group-directories-first --classify"
 alias h='history'
 alias j='jobs -l'
 alias ..='cd ..'
-alias sd='cd /srv/django'
-alias sh='cd /srv/http'
-alias sw='cd /srv/wsgi'
+alias gs='git status'
+alias gc='git commit'
+alias gd='git diff'
 alias path='echo -e ${PATH//:/\\n}'
 alias hc='herbstclient'
-alias sql='sqsh -U SALMAT\\edgecomd -P PushKaWork42'
 alias spm='sudo pacman'
-alias redgy='rdesktop -u edgecomd -d SALMAT -b -z CRLX113810 -g 1920x1080 -r sound:on'
-alias svn_add_all="svn st | grep '^\?' | awk '{print \$2}' | xargs svn add"
-alias svn_rem_all="svn st | grep '^\!' | awk '{print \$2}' | xargs svn rm"
+alias chromium='sudo chromium --user-data-dir=~/.config/chromium/'
 
 alias tf="sudo tail -f"
 # alias df="df -hT"
@@ -92,13 +89,13 @@ alias cg="systemd-cgls"
 alias psc="ps xawf -eo pid,user,cgroup,args"
 
 # alias l.="ls -d .[^.]*"
-# alias la="ls -la"
+alias la="ls -la"
 # alias lc="ls -1 | wc -l"
 # alias p="pwd -P"
-# alias h="hostname"
-# alias u="whoami"
+alias h="hostname"
+alias u="whoami"
 # alias tree="tree -CF"
-# alias s="ssh"
+alias s="ssh"
 
 # # optional app aliases
 # [[ -x =task ]] && alias t="task"
