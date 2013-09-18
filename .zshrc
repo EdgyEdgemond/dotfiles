@@ -35,7 +35,10 @@ export PATH="$PATH:$HOME/bin"
 export TMP="$HOME/tmp"
 export TEMP="$TMP"
 export TMPDIR="$TMP"
+export WORKON_HOME=$HOME/.virtualenvs
 # export BROWSER="/usr/bin/dwb"
+
+source /usr/bin/virtualenvwrapper.sh
 
 # completion
 autoload -Uz compinit
