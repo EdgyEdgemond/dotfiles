@@ -24,7 +24,7 @@ hc keybind $Mod-Return spawn urxvt
 hc keybind $Mod-slash spawn dmenu_run -i -p ?
 
 #tags
-TAG_NAMES=( L1 L2 L3 logs logs-prd code sql chat mail net )
+TAG_NAMES=( 1 2 3 4 5 6 7 8 skype net )
 
 hc rename default "${TAG_NAMES[0]}" || true
 for i in ${!TAG_NAMES[@]}; do
@@ -84,6 +84,7 @@ hc keybind $Mod-Right spawn mpc next
 hc keybind $Mod-Left spawn mpc prev
 hc keybind $Mod-Up spawn mpc volume +1
 hc keybind $Mod-Down spawn mpc volume -1
+hc keybind $Mod-Shift-P spawn mpc play
 
 if [[ -x $HOME/bin/herbstluftwm/splitter ]]; then
     hc keybind $Mod-F9 spawn $HOME/bin/herbstluftwm/splitter two
@@ -128,7 +129,7 @@ hc unlock
 # do multi monitor setup here, e.g.:
 hc remove_monitor 1
 hc move_monitor 0 1920x1080+0+0 0 0 21 0
-hc add_monitor 1914x1080+1920+0 net
+hc add_monitor 1918x1080+1920+0 net
 
 # find the panel
 panel=~/.config/herbstluftwm/panel.sh

@@ -11,6 +11,7 @@ total_run_times 0
 use_spacer none
 short_units yes
 minimum_size 1910
+double_buffer yes
 font -*-fixed-*-*-*-*-12-*-*-*-*-*-*-*
 draw_shades no
 #imap mel0mxs02lp boycem XXXX -i 60

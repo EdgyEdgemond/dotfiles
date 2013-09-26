@@ -1,7 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/danieledgecombe/.oh-my-zsh'
-let g:netrw_dirhist_2='/home/danieledgecombe/dotfiles'
-let g:netrw_dirhist_3='/home/danieledgecombe/code/locker/src/apps/api/models'
-let g:netrw_dirhist_4='/home/danieledgecombe/code/locker/src/apps'
-let g:netrw_dirhist_5='/home/danieledgecombe/.vim/autoload'
+let g:netrw_dirhist_cnt =0

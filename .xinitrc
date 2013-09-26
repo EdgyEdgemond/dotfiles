@@ -12,6 +12,8 @@ dbus-launch --exit-with-session $WM & WMPID=$!
 
 [ -x $HOME/.randwallpaper ] && $HOME/.randwallpaper &
 
+[ -f $HOME/.conkyrc ] && conky -d &
+
 [Desktop Entry]
 Encoding=UTF-8
 Version=0.9.1

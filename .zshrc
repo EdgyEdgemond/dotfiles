@@ -36,9 +36,10 @@ export TMP="$HOME/tmp"
 export TEMP="$TMP"
 export TMPDIR="$TMP"
 export WORKON_HOME=$HOME/.virtualenvs
-# export BROWSER="/usr/bin/dwb"
+# export BROWSER='/usr/bin/dwb'
 
 source /usr/bin/virtualenvwrapper.sh
+source /usr/share/git/completion/git-prompt.sh
 
 # completion
 autoload -Uz compinit
@@ -56,10 +57,10 @@ zstyle ':completion:*:killall:*' force-list always
 zstyle ':completion:*:*:cdr:*:*' menu selection
 
 # # aliases
-alias jc="journalctl --no-pager"
-alias jf="journalctl -fa --no-pager"
+alias jc='journalctl --no-pager'
+alias jf='journalctl -fa --no-pager'
 alias mkdir='mkdir -p'
-alias ls="ls --color=auto --human-readable --group-directories-first --classify"
+alias ls='ls --color=auto --human-readable --group-directories-first --classify'
 alias h='history'
 alias j='jobs -l'
 alias ..='cd ..'
@@ -70,38 +71,44 @@ alias path='echo -e ${PATH//:/\\n}'
 alias hc='herbstclient'
 alias spm='sudo pacman'
 alias chromium='sudo chromium --user-data-dir=~/.config/chromium/'
+alias mkvirtualenv2='mkvirtualenv -p $(which python2.7)'
+alias won='workon'
+alias woff='deactivate && cd'
+alias pi2='pip-2.7 install'
+alias sql='mysql -u root'
+alias pep8out='find . -name "*.py" | grep -ve \/migrations\/ -e \/tests\/ | xargs -n 1 -t pep8 --max-line-length 120 >| out'
 
-alias tf="sudo tail -f"
-# alias df="df -hT"
+alias tf='sudo tail -f'
+# alias df='df -hT'
 
-# alias -g C="| wc -l"
+# alias -g C='| wc -l'
 # alias -g DN=/dev/null
 alias -g VLE=/var/log/everything.log
 alias -g VLM=/var/log/messages.log
 #
 # systemd aliases
-if [[ "$EUID" == "0" ]]; then
+if [[ '$EUID' == '0' ]]; then
     # these are here just to stop log entries for root user (from sudo calls)
-    alias sc="systemctl --no-pager"
-    alias spm="pacman"
+    alias sc='systemctl --no-pager'
+    alias spm='pacman'
 else
-    alias sc="sudo systemctl --no-pager"
-    alias spm="sudo pacman"
+    alias sc='sudo systemctl --no-pager'
+    alias spm='sudo pacman'
 fi
-alias cg="systemd-cgls"
-alias psc="ps xawf -eo pid,user,cgroup,args"
+alias cg='systemd-cgls'
+alias psc='ps xawf -eo pid,user,cgroup,args'
 
-# alias l.="ls -d .[^.]*"
-alias la="ls -la"
-# alias lc="ls -1 | wc -l"
-# alias p="pwd -P"
-alias h="hostname"
-alias u="whoami"
-# alias tree="tree -CF"
-alias s="ssh"
+# alias l.='ls -d .[^.]*'
+alias la='ls -la'
+# alias lc='ls -1 | wc -l'
+# alias p='pwd -P'
+alias h='hostname'
+alias u='whoami'
+# alias tree='tree -CF'
+alias s='ssh'
 
 # # optional app aliases
-# [[ -x =task ]] && alias t="task"
+# [[ -x =task ]] && alias t='task'
 
 setopt prompt_subst
 autoload -U regexp-replace
@@ -110,39 +117,45 @@ autoload -Uz vcs_info
 
 zstyle ':vcs_info:*' enable hg svn
 zstyle ':vcs_info:hg*:*' check-for-changes true
-zstyle ':vcs_info:hg*' formats "%{$fg[yellow]%}%s%b "
-zstyle ':vcs_info:hg*' actionformats "%{$fg[yellow]%}%b|%a"
-zstyle ':vcs_info:hg*' branchformat "-%b"
-zstyle ':vcs_info:svn*:*' formats "%{$fg[yellow]%}%s%b "
-zstyle ':vcs_info:svn*' actionformats "%{$fg[yellow]%}%b|%a"
-zstyle ':vcs_info:svn*' branchformat "-%b"
+zstyle ':vcs_info:hg*' formats '%{$fg[yellow]%}%s%b '
+zstyle ':vcs_info:hg*' actionformats '%{$fg[yellow]%}%b|%a'
+zstyle ':vcs_info:hg*' branchformat '-%b'
+zstyle ':vcs_info:svn*:*' formats '%{$fg[yellow]%}%s%b '
+zstyle ':vcs_info:svn*' actionformats '%{$fg[yellow]%}%b|%a'
+zstyle ':vcs_info:svn*' branchformat '-%b'
 
-function hg_dirty() {
-    hg status 2> /dev/null | awk '$1 == "?" { print "??" } $1 != "?" {print "!!"}' | sort | uniq | head -c2
-}
+# function hg_dirty() {
+#     hg status 2> /dev/null | awk '$1 == '?' { print '??' } $1 != '?' {print '!!'}' | sort | uniq | head -c2
+# }
+# 
+# function svn_dirty() {
+#     svn status 2> /dev/null | awk '$1 == '?' { print '??' } $1 != '?' {print '!!'}' | sort | uniq | head -c2
+# }
+# 
+# precmd () {
+#     vcs_info
+#     if [[ $(hg_dirty) == '!!' || $(hg_dirty) == '??' ]]
+#     then
+#         PROMPT_CHAR=$(hg_dirty)
+#     else
+#         if [[ $(svn_dirty) == '!!' || $(svn_dirty) == '??' ]]
+#         then
+#             PROMPT_CHAR=$(svn_dirty)
+#         else
+#             PROMPT_CHAR='>>'
+#         fi
+#     fi
+# }
+# PROMPT='${vcs_info_msg_0_}'
+# PROMPT_2='$PROMPT_CHAR'
+# PS1='%{$fg[cyan]%}%m $PROMPT%{$fg[white]%}$PROMPT_2 '
 
-function svn_dirty() {
-    svn status 2> /dev/null | awk '$1 == "?" { print "??" } $1 != "?" {print "!!"}' | sort | uniq | head -c2
-}
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWSTASHSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
 
-precmd () {
-    vcs_info
-    if [[ $(hg_dirty) == "!!" || $(hg_dirty) == "??" ]]
-    then
-        PROMPT_CHAR=$(hg_dirty)
-    else
-        if [[ $(svn_dirty) == "!!" || $(svn_dirty) == "??" ]]
-        then
-            PROMPT_CHAR=$(svn_dirty)
-        else
-            PROMPT_CHAR='>>'
-        fi
-    fi
-}
-PROMPT='${vcs_info_msg_0_}'
-PROMPT_2='$PROMPT_CHAR'
-PS1="%{$fg[cyan]%}%m $PROMPT%{$fg[white]%}$PROMPT_2 "
-RPROMPT="%{$fg[magenta]%}%~ %{$fg[magenta]%}%n%{$fg[white]%}"
+PS1='%{$fg[cyan]%}%m %{$fg[red]%}$(__git_ps1 "(%s) ")%{$fg[white]%}>> '
+RPROMPT='%{$fg[magenta]%}%~ %{$fg[magenta]%}%{$fg[white]%}%n'
 
 # keyboard malarkey                                                                                                                                       
 autoload zkbd
@@ -173,16 +186,16 @@ key[Down]='^[[B'
 key[Right]='^[[C'
 key[Menu]=''''
 
-[[ -n ${key[Left]}     ]] && bindkey "${key[Left]}"     backward-char
-[[ -n ${key[Right]}    ]] && bindkey "${key[Right]}"    forward-char
-[[ -n ${key[Up]}       ]] && bindkey "${key[Up]}"       up-line-or-history
-[[ -n ${key[Down]}     ]] && bindkey "${key[Down]}"     down-line-or-history
-[[ -n ${key[Home]}     ]] && bindkey "${key[Home]}"     beginning-of-line
-[[ -n ${key[End]}      ]] && bindkey "${key[End]}"      end-of-line
-[[ -n ${key[PageUp]}   ]] && bindkey "${key[PageUp]}"   history-beginning-search-backward
-[[ -n ${key[PageDown]} ]] && bindkey "${key[PageDown]}" history-beginning-search-forward
-[[ -n ${key[Delete]}   ]] && bindkey "${key[Delete]}"   delete-char
-[[ -n "${key[Insert]}" ]] && bindkey "${key[Insert]}"   overwrite-mode
+[[ -n ${key[Left]}     ]] && bindkey '${key[Left]}'     backward-char
+[[ -n ${key[Right]}    ]] && bindkey '${key[Right]}'    forward-char
+[[ -n ${key[Up]}       ]] && bindkey '${key[Up]}'       up-line-or-history
+[[ -n ${key[Down]}     ]] && bindkey '${key[Down]}'     down-line-or-history
+[[ -n ${key[Home]}     ]] && bindkey '${key[Home]}'     beginning-of-line
+[[ -n ${key[End]}      ]] && bindkey '${key[End]}'      end-of-line
+[[ -n ${key[PageUp]}   ]] && bindkey '${key[PageUp]}'   history-beginning-search-backward
+[[ -n ${key[PageDown]} ]] && bindkey '${key[PageDown]}' history-beginning-search-forward
+[[ -n ${key[Delete]}   ]] && bindkey '${key[Delete]}'   delete-char
+[[ -n '${key[Insert]}' ]] && bindkey '${key[Insert]}'   overwrite-mode
 
 # .zshrc
 # mel boyce <mel@melboyce.com>
