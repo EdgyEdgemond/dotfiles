@@ -14,6 +14,9 @@ setopt pushd_ignore_dups    # ignore duplicate pushes
 stty start undef
 stty stop undef
 
+ip_addr=`hostname -i 2>&1`
+
+ip_addr=${ip_addr// /}
 # options
 setopt autocd           # no cd required
 setopt appendhistory    # fuck knows
@@ -76,7 +79,23 @@ alias won='workon'
 alias woff='deactivate && cd'
 alias pi2='pip-2.7 install'
 alias sql='mysql -u root'
-alias pep8out='find . -name "*.py" | grep -ve \/migrations\/ -e \/tests\/ | xargs -n 1 -t pep8 --max-line-length 120 >| out'
+alias pep8out='find . -name "*.py" | grep -ve \/migrations\/ | xargs -n 1 -t pep8 --max-line-length 120 >| out'
+alias settitle='printf \\033]0\;\%s\\007'
+alias bootstore='settitle Store && won store && ./manage.py runserver 0.0.0.0:8000'
+alias bootlocker='settitle Locker && won locker && ./manage.py runserver 0.0.0.0:8001'
+alias bootconman='settitle Conman && won conman && ./manage.py runserver 0.0.0.0:8002'
+alias bootpostman='settitle Postman && won postman && ./manage.py runserver 0.0.0.0:8003'
+alias bootauth='settitle Auth && won authenticate && ./manage.py runserver 0.0.0.0:8004'
+alias bootservice='settitle ServiceManager && won service_manager && ./manage.py runserver 0.0.0.0:8005'
+alias bootcust='settitle CustomerService && won customer_service && ./manage.py runserver 0.0.0.0:8006'
+
+alias bootstoreext='settitle Store && won store && ./manage.py runserver $ip_addr:8000'
+alias bootlockerext='settitle Locker && won locker && ./manage.py runserver $ip_addr:8001'
+alias bootconmanext='settitle Conman && won conman && ./manage.py runserver $ip_addr:8002'
+alias bootpostmanext='settitle Postman && won postman && ./manage.py runserver $ip_addr:8003'
+alias bootauthext='settitle Auth && won authenticate && ./manage.py runserver $ip_addr:8004'
+alias bootserviceext='settitle ServiceManager && won service_manager && ./manage.py runserver $ip_addr:8005'
+alias bootcustext='settitle CustomerService && won customer_service && ./manage.py runserver $ip_addr:8006'
 
 alias tf='sudo tail -f'
 # alias df='df -hT'
