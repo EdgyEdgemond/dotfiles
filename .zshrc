@@ -96,6 +96,7 @@ alias bootpostmanext='settitle Postman && won postman && ./manage.py runserver $
 alias bootauthext='settitle Auth && won authenticate && ./manage.py runserver $ip_addr:8004'
 alias bootserviceext='settitle ServiceManager && won service_manager && ./manage.py runserver $ip_addr:8005'
 alias bootcustext='settitle CustomerService && won customer_service && ./manage.py runserver $ip_addr:8006'
+alias boothbext='settitle Heartbeat && won heartbeat && python local_run.py'
 
 alias tf='sudo tail -f'
 # alias df='df -hT'

@@ -86,11 +86,12 @@ hc keybind $Mod-Up spawn mpc volume +1
 hc keybind $Mod-Down spawn mpc volume -1
 hc keybind $Mod-Shift-P spawn mpc play
 
-if [[ -x $HOME/bin/herbstluftwm/splitter ]]; then
-    hc keybind $Mod-F9 spawn $HOME/bin/herbstluftwm/splitter two
-    hc keybind $Mod-F10 spawn $HOME/bin/herbstluftwm/splitter three
-    hc keybind $Mod-F11 spawn $HOME/bin/herbstluftwm/splitter trip
-    hc keybind $Mod-F12 spawn $HOME/bin/herbstluftwm/splitter four
+if [[ -x $HOME/scripts/herbstluftwm/splitter ]]; then
+    hc keyscriptsd Control-1 spawn $HOME/scripts/herbstluftwm/splitter two
+    hc keyscriptsd $Mod-Control-2 spawn $HOME/scripts/herbstluftwm/splitter three
+    hc keyscriptsd $Mod-Control-3 spawn $HOME/scripts/herbstluftwm/splitter trip
+    hc keyscriptsd $Mod-Control-4 spawn $HOME/scripts/herbstluftwm/splitter four
+    hc keyscriptsd $Mod-Control-5 spawn $HOME/scripts/herbstluftwm/splitter five
 fi
 
 if [[ -x $HOME/bin/herbstluftwm/closeall ]]; then
