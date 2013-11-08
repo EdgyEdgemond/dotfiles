@@ -1,6 +1,6 @@
 # basics
-set realname = "Daniel Edgecombe"
-set from = "daniel.edgecombe@salmat.com.au"
+set realname = "Daniel Edgy Edgecombe"
+set from = "daniel.edgecombe@saffrondigital.com"
 set signature = ~/.signature
 set alias_file = ~/.mutt/aliases   # address aliases
 source $alias_file                 # read them in
@@ -36,8 +36,8 @@ set index_format   = "%4C %Z %{%b %d} %-15.15F (%4l) %s"
 set pager_index_lines=10
 
 # imap/mail-server shit
-set folder = imap://mel0mxs02lp/   # imap server
-set imap_user = edgecomd           # imap username
+set folder = imap://secure.emailsrvr.com/   # imap server
+set imap_user = daniel.edgecombe@saffrondigital.com           # imap username
 set spoolfile = +mail
 set postponed = +Drafts
 set record = "+Sent Items"
@@ -50,14 +50,14 @@ set timeout = 15
 set net_inc = 5
 set sendmail = "/usr/bin/esmtp"
 set use_envelope_from = yes
-set query_command = "~/bin/mutt-ldap.pl '%s'"
+# set query_command = "~/bin/mutt-ldap.pl '%s'"
 
 bind editor "\t" complete-query
-bind index { sidebar-prev
-bind index } sidebar-next
+bind index } sidebar-prev
+bind index { sidebar-next
 bind index | sidebar-open
-bind pager { sidebar-prev
-bind pager } sidebar-next
+bind pager ] sidebar-prev
+bind pager [ sidebar-next
 bind pager | sidebar-open
 
 # headers
@@ -83,31 +83,31 @@ alternative_order text/enriched text/plain text
 
 
 # colors
-source /home/edgy/.mutt/colors
-#color attachment red default    # any attachments
-#color error brightwhite red     # mutt error messages
-#color hdrdefault cyan default   # header colors
-#color indicator black yellow    # arrow or bar for current item in a menu
-#color markers red default       # the "+" markers at the beginning of wrapped lines in the pager
-#color message brightred default # informational messages
-#color normal white default      # normal non-quoted text
-#color quoted blue default       # text matching $quote_regexp in the body of a message
-#color search magenta default    # highlighting of words in the pager
-#color signature blue default    # any text beneath the signature line
-#color status brightgreen blue   # mode lines for information
-#color tilde brightblack default # the "~" used to pad blank lines in the pager
-#color tree color9 default        # thread trees
-#
-#color body brightgreen default "(http|ftp)://[^ \"\t\r\n]*" # http/ftp addresses
-#color body brightgreen default "[-a-z_0-9.]+@[-a-z_0-9.]+"  # email addresses
-#color header brightcyan default "^(From|Subject):"          # important headers
-#
-#color index brightblack default ~D  # deleted
-#color index yellow default ~T       # tagged
-#color index cyan default ~Q         # replied
-#color index green default ~p        # to me
-#color index red default ~F          # flagged
-#color index brightwhite default ~N          # new
+# source /home/edgy/.mutt/colors
+color attachment red default    # any attachments
+color error brightwhite red     # mutt error messages
+color hdrdefault cyan default   # header colors
+color indicator black yellow    # arrow or bar for current item in a menu
+color markers red default       # the "+" markers at the beginning of wrapped lines in the pager
+color message brightred default # informational messages
+color normal white default      # normal non-quoted text
+color quoted blue default       # text matching $quote_regexp in the body of a message
+color search magenta default    # highlighting of words in the pager
+color signature blue default    # any text beneath the signature line
+color status brightgreen blue   # mode lines for information
+color tilde brightblack default # the "~" used to pad blank lines in the pager
+color tree color9 default        # thread trees
+
+color body brightgreen default "(http|ftp)://[^ \"\t\r\n]*" # http/ftp addresses
+color body brightgreen default "[-a-z_0-9.]+@[-a-z_0-9.]+"  # email addresses
+color header brightcyan default "^(From|Subject):"          # important headers
+
+color index brightblack default ~D  # deleted
+color index yellow default ~T       # tagged
+color index cyan default ~Q         # replied
+color index green default ~p        # to me
+color index red default ~F          # flagged
+color index brightwhite default ~N          # new
 
 
 # version on startup

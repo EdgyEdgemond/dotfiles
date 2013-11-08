@@ -1,11 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/home/edgy/code/service_manager/src/service_manager/models'
-let g:netrw_dirhist_2='/home/edgy/code/storefront/src/apps/api/models'
-let g:netrw_dirhist_3='/home/edgy/code/postman/src/postman/models'
-let g:netrw_dirhist_4='/home/edgy/code/locker/src/apps/api/utils'
-let g:netrw_dirhist_5='/home/edgy/code/storefront/src/apps/api/utils'
-let g:netrw_dirhist_6='/home/edgy/scripts'
-let g:netrw_dirhist_7='/home/edgy/code/storefront/src/apps/api/views'
-let g:netrw_dirhist_8='/home/edgy/code/storefront/src/apps/api/views/v1'
-let g:netrw_dirhist_9='/home/edgy/code/heartbeat/app/settings'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/edgy/code/service_manager/src/apps/api/urls'
+let g:netrw_dirhist_2='/home/edgy/code/service_manager/src/apps/api/urls/v1'
+let g:netrw_dirhist_3='/home/edgy/code/service_manager/src/apps/api/urls'
+let g:netrw_dirhist_4='/home/edgy/code/service_manager/src/apps/api/urls/v1'

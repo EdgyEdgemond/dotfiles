@@ -157,7 +157,7 @@ let g:netrw_liststyle=3  " tree-mode
 let g:tmux_djangotest_manage_py="python manage.py"
 let g:tmux_djangotest_test_cmd="test"
 let g:tmux_djangotest_test_file_contains="TestCase"
-let g:tmux_djangotest_file_prefix=""
+let g:tmux_djangotest_file_prefix="source ../activate &&"
 let g:tmux_djangotest_tmux_cmd="screen#ScreenShell"
 
 "settings for screen-tmux

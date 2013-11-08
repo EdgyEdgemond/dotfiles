@@ -8,6 +8,7 @@ source ~/.colours
 function hc() {
     herbstclient "$@"
 }
+
 hc emit_hook reload
 
 
@@ -24,7 +25,7 @@ hc keybind $Mod-Return spawn urxvt
 hc keybind $Mod-slash spawn dmenu_run -i -p ?
 
 #tags
-TAG_NAMES=( 1 2 3 4 5 6 7 8 skype net )
+TAG_NAMES=( 1 2 3 4 5 6 7 8 9 0 )
 
 hc rename default "${TAG_NAMES[0]}" || true
 for i in ${!TAG_NAMES[@]}; do
@@ -87,11 +88,10 @@ hc keybind $Mod-Down spawn mpc volume -1
 hc keybind $Mod-Shift-P spawn mpc play
 
 if [[ -x $HOME/scripts/herbstluftwm/splitter ]]; then
-    hc keyscriptsd Control-1 spawn $HOME/scripts/herbstluftwm/splitter two
-    hc keyscriptsd $Mod-Control-2 spawn $HOME/scripts/herbstluftwm/splitter three
-    hc keyscriptsd $Mod-Control-3 spawn $HOME/scripts/herbstluftwm/splitter trip
-    hc keyscriptsd $Mod-Control-4 spawn $HOME/scripts/herbstluftwm/splitter four
-    hc keyscriptsd $Mod-Control-5 spawn $HOME/scripts/herbstluftwm/splitter five
+    hc keybind $Mod-F9 spawn $HOME/scripts/herbstluftwm/splitter nine
+    hc keybind $Mod-F10 spawn $HOME/scripts/herbstluftwm/splitter three
+    hc keybind $Mod-F11 spawn $HOME/scripts/herbstluftwm/splitter trip
+    hc keybind $Mod-F12 spawn $HOME/scripts/herbstluftwm/splitter four
 fi
 
 if [[ -x $HOME/bin/herbstluftwm/closeall ]]; then
@@ -105,9 +105,9 @@ hc set frame_bg_transparent 1
 hc set frame_bg_normal_color "$c_grey"
 hc set frame_bg_active_color "$c_violet"
 hc set frame_border_width 0
-hc set window_border_width 1
+hc set window_border_width 2
 hc set window_border_normal_color "$c_grey"
-hc set window_border_active_color "$c_violet"
+hc set window_border_active_color "$c_red"
 hc set always_show_frame 1
 hc set window_gap 1
 hc set frame_gap 1
@@ -121,16 +121,14 @@ hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)' manage=off
-hc rule class=Chromium tag=net
-hc rule title=mutt tag=mail
 
 # unlock, just to be sure
 hc unlock
 
 # do multi monitor setup here, e.g.:
 hc remove_monitor 1
-hc move_monitor 0 1920x1080+0+0 0 0 21 0
-hc add_monitor 1918x1080+1920+0 net
+hc move_monitor 0 1920x1080+0+0 0 0 21 1
+hc add_monitor 1918x1080+1920+0 2
 
 # find the panel
 panel=~/.config/herbstluftwm/panel.sh
@@ -142,7 +140,7 @@ done
 
 # find the panel
 conky=~/.conkyrc
-[ -f "$conky" ]
+if [ -f "$conky" ]
     # start it on each monitor
     $conky  &
-done
+fi

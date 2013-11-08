@@ -11,3 +11,4 @@ ln -sf ~/dotfiles/.zshrc ~/
 ln -sf ~/dotfiles/autostart ~/.config/autostart
 ln -sf ~/dotfiles/herbstluftwm ~/.config/herbstluftwm
 ln -sf ~/dotfiles/randwallpaper.sh ~/.randwallpaper
+ln -sf ~/dotfiles/.muttrc ~/.muttrc
