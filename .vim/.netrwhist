@@ -1,6 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/home/edgy/code/service_manager/src/apps/api/urls'
-let g:netrw_dirhist_2='/home/edgy/code/service_manager/src/apps/api/urls/v1'
-let g:netrw_dirhist_3='/home/edgy/code/service_manager/src/apps/api/urls'
-let g:netrw_dirhist_4='/home/edgy/code/service_manager/src/apps/api/urls/v1'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/edgy/code/puppet/modules/django/manifests'
+let g:netrw_dirhist_2='/home/edgy/code/puppet/modules/django'
+let g:netrw_dirhist_3='/home/edgy/code/puppet/modules/django/manifests'
+let g:netrw_dirhist_4='/home/edgy/code/storefront/src/apps/api'
+let g:netrw_dirhist_5='/home/edgy/code/storefront/src/apps/api/urls/v1'
