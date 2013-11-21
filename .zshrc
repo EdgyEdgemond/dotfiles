@@ -91,6 +91,9 @@ alias bootservice='settitle ServiceManager && won service_manager && ./manage.py
 alias bootcust='settitle CustomerService && won customer_service && ./manage.py runserver $ip_addr:8006'
 alias boothb='settitle Heartbeat && won heartbeat && python local_run.py'
 alias bootkey='settitle KeyDelivery && won keydelivery && ./manage.py runserver $ip_addr:8008'
+alias bootflower='settitle Flower && flower --address=$ip_addr --port=8009 --broker=amqp://guest@localhost:5672//'
+alias bootmonitor='settitle Monitor && won monitor && python app.py'
+alias bootimage='settitle Image && won image && ./manage.py runserver $ip_addr:8012'
 
 alias tf='sudo tail -f'
 # alias df='df -hT'

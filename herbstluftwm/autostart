@@ -86,6 +86,7 @@ hc keybind $Mod-Left spawn mpc prev
 hc keybind $Mod-Up spawn mpc volume +1
 hc keybind $Mod-Down spawn mpc volume -1
 hc keybind $Mod-Shift-P spawn mpc play
+hc keybind $Mod-Ctrl-l spawn xscreensaver-command -lock 
 
 if [[ -x $HOME/scripts/herbstluftwm/splitter ]]; then
     hc keybind $Mod-F9 spawn $HOME/scripts/herbstluftwm/splitter nine
