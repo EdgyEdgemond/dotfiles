@@ -39,6 +39,7 @@ export TMP="$HOME/tmp"
 export TEMP="$TMP"
 export TMPDIR="$TMP"
 export WORKON_HOME=$HOME/.virtualenvs
+export PYTHONDONTWRITEBYTECODE=1
 # export BROWSER='/usr/bin/dwb'
 
 source /usr/bin/virtualenvwrapper.sh
@@ -80,13 +81,15 @@ alias won='workon'
 alias woff='deactivate && cd'
 alias pi2='pip-2.7 install'
 alias sql='mysql -u root'
-alias pep8out='find . -name "*.py" | grep -ve \/migrations\/ | xargs -n 1 -t pep8 --max-line-length 120 --ignore=E501 >| out'
+alias grep='grep --color=auto'
+alias pep8out='find . -name "*.py" | grep -ve \/migrations\/ | xargs -n 1 -t pep8 --max-line-length 120 --ignore=E501 >| out && vim out'
+# alias pep8out="git status | grep -e 'modified:.*py' -e 'new file:.*py' | cut -f 2 -d: | xargs -n 1 -t pep8 --max-line-length 120 --ignore=E501 >| out"
 alias pep8full='find . -name "*.py" | grep -ve \/migrations\/ | xargs -n 1 -t pep8 --max-line-length 120 >| out'
 alias settitle='printf \\033]0\;\%s\\007'
 
 alias bootstore='settitle Store && won store && ./manage.py runserver $ip_addr:8000'
 alias bootlocker='settitle Locker && won locker && ./manage.py runserver $ip_addr:8001'
-alias bootconman='settitle Conman && won conman && ./manage.py runserver $ip_addr:8002'
+alias bootbackstage='settitle Backstage && won backstage && ./manage.py runserver $ip_addr:8002'
 alias bootpostman='settitle Postman && won postman && ./manage.py runserver $ip_addr:8003'
 alias bootauth='settitle Auth && won authenticate && ./manage.py runserver $ip_addr:8004'
 alias bootservice='settitle ServiceManager && won service_manager && ./manage.py runserver $ip_addr:8005'
@@ -99,6 +102,7 @@ alias bootimage='settitle Image && won image && ./manage.py runserver $ip_addr:8
 alias bootpayment='settitle Payment && won payment && ./manage.py runserver $ip_addr:8013'
 alias boottoksi='settitle Toksi && won toksi && ./manage.py runserver $ip_addr:8014'
 alias bootreporting='settitle Reporting && won reporting && ./manage.py runserver $ip_addr:8015'
+alias bootcongestion='settitle Congestion && won congestion && ./manage.py runserver $ip_addr:8016'
 
 alias tf='sudo tail -f'
 # alias df='df -hT'

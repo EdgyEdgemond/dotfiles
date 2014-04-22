@@ -99,6 +99,9 @@ if [[ -x $HOME/bin/herbstluftwm/closeall ]]; then
     hc keybind $Mod-BackSpace spawn $HOME/bin/herbstluftwm/closeall
 fi
 
+if [[ -x $HOME/randwallpaper.sh ]]; then
+    hc keybind $Mod-Shift-BackSpace spawn $HOME/randwallpaper.sh
+fi
 # colors
 hc set frame_border_active_color '#222222'
 hc set frame_border_normal_color '#101010'

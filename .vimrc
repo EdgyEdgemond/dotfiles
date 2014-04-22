@@ -27,7 +27,6 @@ set hlsearch
 set ignorecase smartcase  " ignore case on searches unless explicitly cased
 set cmdheight=2
 set backupskip+=/var/spool/cron/*
-set fileformat=unix
 set wildmode=longest,list
 set wildmenu
 set viminfo^=!
@@ -60,7 +59,7 @@ set undofile
 " http://www.shallowsky.com/linux/noaltscreen.html
 set t_ti= t_te=
 
-
+if &l:modifiable | setlocal fileformat=unix | endif
 " jump to last known cursor position
 augroup vimrcEx
     autocmd!
@@ -92,6 +91,8 @@ map <c-h> <c-w>h
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
+
+map <leader>j !python -m json.tool<cr>
 
 " no arrow keys :/
 map <left> <nop>
