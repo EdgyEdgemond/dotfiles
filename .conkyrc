@@ -1,7 +1,8 @@
 ### options
 background yes
 alignment bl
-gap_x 4
+display :0
+gap_x -1916
 gap_y 4
 border_width 0
 own_window yes
@@ -10,7 +11,7 @@ update_interval 1.0
 total_run_times 0
 use_spacer none
 short_units yes
-minimum_size 1910
+minimum_size 1911
 double_buffer yes
 font -*-fixed-*-*-*-*-12-*-*-*-*-*-*-*
 draw_shades no
@@ -51,5 +52,5 @@ ${color9}${upspeedgraph eth0 9,50}${color9} \
  procs: ${color3}${processes}${color9} \
  threads: ${color3}${threads}${color9} \
  users: ${color3}${user_number}${color9} \
- ymml: ${color3}${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ YMML temperature }C${color9} \
+ egll: ${color3}${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ EGLL temperature }C${color9} \
 ${if_mpd_playing} mpd: ${mpd_bar 9,50} ${color7}${mpd_smart}${color9}${endif} \

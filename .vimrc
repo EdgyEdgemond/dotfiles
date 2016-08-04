@@ -43,8 +43,8 @@ set tabstop=4
 set smarttab
 set scrolloff=999
 let mapleader=","
-"let &colorcolumn=join(range(81,999),",")
 set colorcolumn=121
+set lazyredraw  " dont redraw when executing macros
 
 " backups
 set noswapfile
@@ -74,7 +74,6 @@ augroup END
 " whitespace visibility: <leader>s
 set listchars=tab:>-,trail:·,eol:$
 nmap <silent> <leader>s :set nolist!<CR>
-vmap <silent> <leader>c :s/^/#<cr>
 
 nmap <silent> <leader>1 1gt<cr>
 nmap <silent> <leader>2 2gt<cr>
@@ -86,14 +85,25 @@ nmap <silent> <leader>6 6gt<cr>
 " strip trailing whitespace: <leader>$
 nnoremap <silent> <leader>$ :call Preserve("%s/\\s\\+$//e")<cr>
 
+" copy into buffer
+vmap <silent> <leader>c "+y
+
+" JSON format selection
+map <leader>j !python -m json.tool<cr>
+
+" insert breakpoints
+au FileType python map <silent> <leader>b oimport pdb; pdb.set_trace()<esc>
+au FileType python map <silent> <leader>B Oimport pdb; pdb.set_trace()<esc>
+
 " window management
 map <c-h> <c-w>h
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 
-map <leader>j !python -m json.tool<cr>
+map <space> /
 
+nmap <A-j> mz:m+<cr>
 " no arrow keys :/
 map <left> <nop>
 map <right> <nop>
@@ -114,13 +124,16 @@ vmap <right> <nop>
 vmap <up> <nop>
 vmap <down> <nop>
 
+noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+map <leader>pp :setlocal paste!<cr>
+
 :command WQ wq
 :command Wq wq
 :command W w
 :command Q q
 
 " colors, syntax, etc
-set t_co=256
+set t_Co=256
 set background=dark
 colorscheme jellybeans
 filetype plugin indent on
@@ -128,7 +141,7 @@ syntax on
 
 
 " statusline
-hi user1 ctermbg=darkblue ctermfg=none
+hi user1 ctermbg=darkblue ctermfg=NONE
 hi user2 ctermbg=darkblue ctermfg=cyan
 hi user3 ctermbg=darkblue ctermfg=yellow
 
@@ -153,6 +166,11 @@ autocmd bufread,bufnewfile *.wiki set ft=wikipedia
 autocmd bufread,bufnewfile .tmux.conf set ft=tmux
 autocmd bufread,bufnewfile /srv/django/templates/* set ft=htmldjango
 
+
+" flake8
+let g:flake8_max_line_length=120
+let g:flake8_builtins="_,unicode,basestring,file,xrange,reduce,long"
+autocmd BufWritePre *.py call Flake8()
 
 " netrw
 let g:netrw_liststyle=3  " tree-mode

@@ -14,7 +14,7 @@ setopt pushd_ignore_dups    # ignore duplicate pushes
 stty start undef
 stty stop undef
 
-ip_addr=`hostname -i 2>&1`
+ip_addr=`hostname -i | cut -c1-12 2>&1`
 
 ip_addr=${ip_addr// /}
 # options
@@ -28,22 +28,26 @@ setopt noflowcontrol    # turn off flowcontrol
 setopt noclobber        # >! and >>! to make it happen
 setopt nonomatch        # bash-style no glob match behaviour
 
-unsetopt beep
+# unsetopt beep
 bindkey -e
 
 # variables
 export EDITOR="vim"
 export PAGER="vimpager"
 export PATH="$PATH:$HOME/bin"
+export GOPATH="$HOME/code/go"
 export TMP="$HOME/tmp"
 export TEMP="$TMP"
 export TMPDIR="$TMP"
 export WORKON_HOME=$HOME/.virtualenvs
 export PYTHONDONTWRITEBYTECODE=1
-# export BROWSER='/usr/bin/dwb'
+export MYSQL_PS1="\u@\h [\d]> "
+# export REQUESTS_CA_BUNDLE=/etc/certs/ssl/ca-certificates.crt
+# export BROWSER=/usr/bin/dwb
 
 source /usr/bin/virtualenvwrapper.sh
 source /usr/share/git/completion/git-prompt.sh
+source ~/bin/ssh-agent-startup
 
 # completion
 autoload -Uz compinit
@@ -70,22 +74,31 @@ alias j='jobs -l'
 alias ..='cd ..'
 alias gs='git status'
 alias gc='git commit'
+alias gco='git checkout'
+alias gcob='git checkout -b'
 alias gd='git diff'
 alias path='echo -e ${PATH//:/\\n}'
 alias hc='herbstclient'
 alias spm='sudo pacman'
 alias sshu='ssh -l ubuntu'
-alias chromium='sudo chromium --user-data-dir=~/.config/chromium/'
+alias ssha='ssh -l ubuntu -i ~/.ssh/saffron_development_jan.pem'
+alias sshc='ssh -l core -i ~/.ssh/sd_preprod_deploy.cer'
+alias chromium='chromium --user-data-dir=~/.config/chromium/'
 alias mkvirtualenv2='mkvirtualenv -p $(which python2.7)'
 alias won='workon'
 alias woff='deactivate && cd'
 alias pi2='pip-2.7 install'
 alias sql='mysql -u root'
 alias grep='grep --color=auto'
-alias pep8out='find . -name "*.py" | grep -ve \/migrations\/ | xargs -n 1 -t pep8 --max-line-length 120 --ignore=E501 >| out && vim out'
-# alias pep8out="git status | grep -e 'modified:.*py' -e 'new file:.*py' | cut -f 2 -d: | xargs -n 1 -t pep8 --max-line-length 120 --ignore=E501 >| out"
-alias pep8full='find . -name "*.py" | grep -ve \/migrations\/ | xargs -n 1 -t pep8 --max-line-length 120 >| out'
+alias pep8out='find . -name "*.py" | grep -ve \/migrations\/ | xargs -n 1 -t pep8 --max-line-length 120 >| out'
 alias settitle='printf \\033]0\;\%s\\007'
+alias sentry='sentry --config=~/.config/sentry/conf.py'
+alias cleanbranches='git checkout master && git pull && git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
+alias ec2='aws ec2 describe-instances >| ec2.txt && vim ec2.txt && rm ec2.txt'
+alias ec2-dev='aws --profile=dev ec2 describe-instances >| ec2.txt && vim ec2.txt && rm ec2.txt'
+alias zk='python ~/scripts/zk_cluster.py'
+alias pss='psql -hstaging-voucher.cycjgrxfbwfj.us-west-1.rds.amazonaws.com -U'
+alias psp='psql -hprod-voucher.c6cyx9y8mpev.us-east-1.rds.amazonaws.com -U'
 
 alias bootstore='settitle Store && won store && ./manage.py runserver $ip_addr:8000'
 alias bootlocker='settitle Locker && won locker && ./manage.py runserver $ip_addr:8001'
@@ -94,18 +107,11 @@ alias bootpostman='settitle Postman && won postman && ./manage.py runserver $ip_
 alias bootauth='settitle Auth && won authenticate && ./manage.py runserver $ip_addr:8004'
 alias bootservice='settitle ServiceManager && won service_manager && ./manage.py runserver $ip_addr:8005'
 alias bootcust='settitle CustomerService && won customer_service && ./manage.py runserver $ip_addr:8006'
-alias boothb='settitle Heartbeat && won heartbeat && python local_run.py'
 alias bootkey='settitle KeyDelivery && won keydelivery && ./manage.py runserver $ip_addr:8008'
-alias bootflower='settitle Flower && flower --address=$ip_addr --port=8009 --broker=amqp://guest@localhost:5672//'
-alias bootmonitor='settitle Monitor && won monitor && python app.py'
 alias bootimage='settitle Image && won image && ./manage.py runserver $ip_addr:8012'
-alias bootpayment='settitle Payment && won payment && ./manage.py runserver $ip_addr:8013'
-alias boottoksi='settitle Toksi && won toksi && ./manage.py runserver $ip_addr:8014'
-alias bootreporting='settitle Reporting && won reporting && ./manage.py runserver $ip_addr:8015'
-alias bootcongestion='settitle Congestion && won congestion && ./manage.py runserver $ip_addr:8016'
 
 alias tf='sudo tail -f'
-# alias df='df -hT'
+alias df='df -hT'
 
 # alias -g C='| wc -l'
 # alias -g DN=/dev/null
@@ -230,3 +236,6 @@ key[Menu]=''''
 
 
 
+
+export NVM_DIR="/home/edgy/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

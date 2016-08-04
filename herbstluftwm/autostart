@@ -17,12 +17,12 @@ hc keyunbind --all
 hc set default_frame_layout 3 # grid
 # keybindings
 Mod=Mod4
-hc keybind $Mod-Shift-q quit
+hc keybind $Mod-Shift-q close
 hc keybind $Mod-Shift-r reload
-hc keybind $Mod-Shift-c close
+hc keybind $Mod-Shift-Mod1-Control-q quit
 hc keybind $Mod-Return spawn urxvt
 #hc keybind $Mod-slash spawn dmenu_run -i -fn "-*-fixed-medium-*-*-*-*-*-*-*-*-*-*-*-*" -nb "#000" -nf "#FFF" -sb"#333"
-hc keybind $Mod-slash spawn dmenu_run -i -p ?
+hc keybind $Mod-slash spawn dmenu_run -i -p '?'
 
 #tags
 TAG_NAMES=( 1 2 3 4 5 6 7 8 9 0 )
@@ -85,7 +85,7 @@ hc keybind $Mod-Right spawn mpc next
 hc keybind $Mod-Left spawn mpc prev
 hc keybind $Mod-Up spawn mpc volume +1
 hc keybind $Mod-Down spawn mpc volume -1
-hc keybind $Mod-Shift-P spawn mpc play
+hc keybind $Mod-Shift-p spawn mpc toggle
 hc keybind $Mod-Ctrl-l spawn xscreensaver-command -lock 
 
 if [[ -x $HOME/scripts/herbstluftwm/splitter ]]; then
@@ -94,6 +94,10 @@ if [[ -x $HOME/scripts/herbstluftwm/splitter ]]; then
     hc keybind $Mod-F11 spawn $HOME/scripts/herbstluftwm/splitter trip
     hc keybind $Mod-F12 spawn $HOME/scripts/herbstluftwm/splitter four
 fi
+
+if [[ -x $HOME/scripts/herbstluftwm/servers ]]; then
+    hc keybind $Mod-b spawn $HOME/scripts/herbstluftwm/servers
+fi 
 
 if [[ -x $HOME/bin/herbstluftwm/closeall ]]; then
     hc keybind $Mod-BackSpace spawn $HOME/bin/herbstluftwm/closeall
@@ -130,9 +134,11 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)' manage=off
 hc unlock
 
 # do multi monitor setup here, e.g.:
+hc remove_monitor 2
 hc remove_monitor 1
 hc move_monitor 0 1920x1080+0+0 0 0 21 1
 hc add_monitor 1918x1080+1920+0 2
+# hc add_monitor 1918x1080+3840+0 3
 
 # find the panel
 panel=~/.config/herbstluftwm/panel.sh

@@ -17,7 +17,7 @@ set include
 set indent_str = "> "
 set tilde                          # pager fills out blank lines with ~
 set honor_followup_to = ask-yes    # honor the Mail-Followup-To header when group-replying
-set sort = threads                 # default sort messages by thread
+set sort = reverse-threads         # default sort messages by thread
 set sort_browser=reverse-date      # showing mbox list default to newest first
 set sort_aux = last-date-received  # showing threads with yougest message last
 set beep_new
@@ -44,11 +44,11 @@ set record = "+Sent Items"
 mailboxes = +mail
 unset imap_passive
 set imap_check_subscribed
-set imap_keepalive = 300
+set imap_keepalive = 60
 set mail_check = 60
 set timeout = 15
 set net_inc = 5
-set sendmail = "/usr/bin/esmtp"
+set sendmail = "/usr/bin/msmtp"
 set use_envelope_from = yes
 # set query_command = "~/bin/mutt-ldap.pl '%s'"
 
