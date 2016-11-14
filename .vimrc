@@ -114,7 +114,7 @@ imap <left> <nop>
 imap <right> <nop>
 imap <up> <nop>
 imap <down> <nop>
-inoremap jk <Esc>
+" inoremap jk <Esc>
 
 imap <PageUp> <up>
 imap <PageDown> <down>

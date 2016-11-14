@@ -1,7 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/edgy/code/parental_controls/alembic'
-let g:netrw_dirhist_2='/home/edgy/code/identity_service/build'
-let g:netrw_dirhist_3='/home/edgy'
-let g:netrw_dirhist_4='/home/edgy/code/schedule_service/src/schedule_service'
-let g:netrw_dirhist_5='/home/edgy/code/go/src/apigw_service/zmqclient'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/edgy/code/gw_sandbox/src/nlapi_sandbox'
+let g:netrw_dirhist_2='/home/edgy/code/developer_stack/deployments/deploy_services/.terraform'
+let g:netrw_dirhist_3='/home/edgy/code/go/src/nlapi_service/src/play'
+let g:netrw_dirhist_4='/home/edgy/code/go/src/nlapi_service/src/account'
