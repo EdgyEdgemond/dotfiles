@@ -6,7 +6,7 @@ setopt hist_fcntl_lock      # use fcntl for locking the history file
 setopt append_history       # all zsh sessions append to history
 # setopt share_history        # shares history across sessions
 setopt hist_ignore_all_dups # unique history items only
-setopt hist_ignore_space    # don't add lines that start with a space
+setopt hist_ignore_space    # dont add lines that start with a space
 setopt hist_allow_clobber   # > and >> become >! and >>! in hist
 setopt pushd_ignore_dups    # ignore duplicate pushes
 
@@ -65,6 +65,9 @@ zstyle ':completion:*:killall:*' force-list always
 zstyle ':completion:*:*:cdr:*:*' menu selection
 
 # # aliases
+alias stash='~/.gem/ruby/2.4.0/gems/atlassian-stash-0.7.0/bin/stash'
+alias fakes3='~/.gem/ruby/2.4.0/gems/fakes3-1.2.0/bin/fakes3'
+alias ns='xinput set-prop 8 291 1'
 alias jc='journalctl --no-pager'
 alias jf='journalctl -fa --no-pager'
 alias mkdir='mkdir -p'
@@ -80,6 +83,7 @@ alias gd='git diff'
 alias path='echo -e ${PATH//:/\\n}'
 alias hc='herbstclient'
 alias spm='sudo pacman'
+alias ussh='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias sshu='ssh -l ubuntu'
 alias ssha='ssh -l ubuntu -i ~/.ssh/saffron_development_jan.pem'
 alias sshc='ssh -l core -i ~/.ssh/sd_preprod_deploy.cer'
@@ -90,7 +94,7 @@ alias woff='deactivate && cd'
 alias pi2='pip-2.7 install'
 alias sql='mysql -u root'
 alias grep='grep --color=auto'
-alias pep8out='find . -name "*.py" | grep -ve \/migrations\/ | xargs -n 1 -t pep8 --max-line-length 120 >| out'
+alias pep8out='find . -name "*.py" | grep -ve \/migrations\/ | xargs -n 1 -t pycodestyle --max-line-length 120 >| out'
 alias settitle='printf \\033]0\;\%s\\007'
 alias sentry='sentry --config=~/.config/sentry/conf.py'
 alias cleanbranches='git checkout master && git pull && git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
@@ -99,6 +103,7 @@ alias ec2-dev='aws --profile=dev ec2 describe-instances >| ec2.txt && vim ec2.tx
 alias zk='python ~/scripts/zk_cluster.py'
 alias pss='psql -hstaging-voucher.cycjgrxfbwfj.us-west-1.rds.amazonaws.com -U'
 alias psp='psql -hprod-voucher.c6cyx9y8mpev.us-east-1.rds.amazonaws.com -U'
+alias dbstrings='cat ~/code/dbstrings'
 
 alias bootstore='settitle Store && won store && ./manage.py runserver $ip_addr:8000'
 alias bootlocker='settitle Locker && won locker && ./manage.py runserver $ip_addr:8001'
@@ -112,6 +117,10 @@ alias bootimage='settitle Image && won image && ./manage.py runserver $ip_addr:8
 
 alias tf='sudo tail -f'
 alias df='df -hT'
+
+function clone_bb {
+    git clone git@bitbucket.org:saffrondigital/$1
+}
 
 # alias -g C='| wc -l'
 # alias -g DN=/dev/null

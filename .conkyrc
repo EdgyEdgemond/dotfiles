@@ -1,44 +1,47 @@
-### options
-background yes
-alignment bl
-display :0
-gap_x -1916
-gap_y 4
-border_width 0
-own_window yes
-own_window_type override
-update_interval 1.0
-total_run_times 0
-use_spacer none
-short_units yes
-minimum_size 1911
-double_buffer yes
-font -*-fixed-*-*-*-*-12-*-*-*-*-*-*-*
-draw_shades no
-#imap mel0mxs02lp boycem XXXX -i 60
+conky.config = {
+--## options
+	background = true,
+	alignment = 'bottom_left',
+	display = ':0',
+	gap_x = -1916,
+	gap_y = 4,
+	border_width = 0,
+	own_window = true,
+	own_window_type = 'override',
+	update_interval = 1.0,
+	total_run_times = 0,
+	use_spacer = 'none',
+	short_units = true,
+	minimum_width = 1911,
+	double_buffer = true,
+	font = '-*-fixed-*-*-*-*-12-*-*-*-*-*-*-*',
+	draw_shades = false,
+--imap mel0mxs02lp boycem XXXX -i 60
 
 
-### colors
-own_window_transparent no
-own_window_colour 002b36
-default_color 657b83
-default_shade_color 000000
-default_outline_color 000000
+--## colors
+	own_window_transparent = false,
+	own_window_colour = '#000000',
+	default_color = '#657b83',
+	default_shade_color = '#000000',
+	default_outline_color = '#000000',
 
-color0 002b36 # background
-color1 073642 # black
-color2 dc322f # red
-color3 859900 # green
-color4 b58900 # yellow
-color5 268bd2 # blue
-color6 d33682 # magenta
-color7 2aa198 # cyan
-color8 eee8d5 # white
-color9 657b83 # foreground
+	color0 = '#002b36',-- background
+	color1 = '#073642',-- black
+	color2 = '#dc322f',-- red
+	color3 = '#859900',-- green
+	color4 = '#b58900',-- yellow
+	color5 = '#268bd2',-- blue
+	color6 = '#d33682',-- magenta
+	color7 = '#2aa198',-- cyan
+	color8 = '#eee8d5',-- white
+	color9 = '#879da5',-- foreground
 
 
-### bar config
-TEXT
+--## bar config
+};
+
+conky.text = [[
 ${color9}\
 cpu: ${color9}${cpubar cpu0 9,50}${color9} \
 ${color9}${cpubar cpu1 9,50}${color9} \
@@ -48,9 +51,10 @@ ${color9}${cpubar cpu3 9,50}${color9} \
  dio: ${color9}${diskiograph 9,50}${color9} \
  eth: ${color9}${downspeedgraph eth0 9,50}${color9} \
 ${color9}${upspeedgraph eth0 9,50}${color9} \
- imap: ${color4}${imap_unseen}${color9} \
  procs: ${color3}${processes}${color9} \
  threads: ${color3}${threads}${color9} \
  users: ${color3}${user_number}${color9} \
- egll: ${color3}${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ EGLL temperature }C${color9} \
 ${if_mpd_playing} mpd: ${mpd_bar 9,50} ${color7}${mpd_smart}${color9}${endif} \
+]];
+ -- imap: ${color4}${imap_unseen}${color9} \
+ -- egll: ${color3}${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ EGLL temperature }C${color9} \
