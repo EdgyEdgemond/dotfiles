@@ -3,7 +3,7 @@ conky.config = {
 	background = true,
 	alignment = 'bottom_left',
 	display = ':0',
-	gap_x = -1916,
+	gap_x = 0,
 	gap_y = 4,
 	border_width = 0,
 	own_window = true,
@@ -14,7 +14,7 @@ conky.config = {
 	short_units = true,
 	minimum_width = 1911,
 	double_buffer = true,
-	font = '-*-fixed-*-*-*-*-12-*-*-*-*-*-*-*',
+	font = 'mono',
 	draw_shades = false,
 --imap mel0mxs02lp boycem XXXX -i 60
 
@@ -47,6 +47,10 @@ cpu: ${color9}${cpubar cpu0 9,50}${color9} \
 ${color9}${cpubar cpu1 9,50}${color9} \
 ${color9}${cpubar cpu2 9,50}${color9} \
 ${color9}${cpubar cpu3 9,50}${color9} \
+${color9}${cpubar cpu4 9,50}${color9} \
+${color9}${cpubar cpu5 9,50}${color9} \
+${color9}${cpubar cpu6 9,50}${color9} \
+${color9}${cpubar cpu7 9,50}${color9} \
  mem: ${color9}${membar 9,50}${color9} \
  dio: ${color9}${diskiograph 9,50}${color9} \
  eth: ${color9}${downspeedgraph eth0 9,50}${color9} \

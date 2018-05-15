@@ -3,6 +3,7 @@
 source ~/.colours
 
 monitor=${1:-0}
+
 geometry=( $(herbstclient monitor_rect "$monitor") )
 if [ -z "$geometry" ] ;then
     echo "Invalid monitor $monitor"
@@ -13,7 +14,7 @@ x=${geometry[0]}
 y=${geometry[1]}
 panel_width=${geometry[2]}
 panel_height=16
-font="-*-fixed-medium-*-*-*-12-*-*-*-*-*-*-"
+font="fixed"
 bgcolor=$c_black
 selbg=$c_blue
 selfg=$c_white
@@ -37,6 +38,7 @@ function uniq_linebuffered() {
 
 herbstclient pad $monitor $panel_height
 {
+    echo "$monitor"
     # events:
     #mpc idleloop player &
     while true ; do
@@ -47,6 +49,7 @@ herbstclient pad $monitor $panel_height
     herbstclient --idle
     kill $childpid
 } 2> /dev/null | {
+    echo "$monitor"
     TAGS=( $(herbstclient tag_status $monitor) )
     date=""
     windowtitle=""
@@ -87,7 +90,7 @@ herbstclient pad $monitor $panel_height
         right="$separator^bg() $date $separator"
         right_text_only=$(echo -n "$right"|sed 's.\^[^(]*([^)]*)..g')
         # get width of right aligned text.. and add some space..
-        width=$($textwidth "$font" "$right_text_only    ")
+        width=$($textwidth "$font" "$right_text_only          ")
         echo -n "^pa($(($panel_width - $width)))$right"
         echo
         # wait for next event

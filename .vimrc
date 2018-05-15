@@ -1,10 +1,18 @@
-" -----------------------------------------------------------------------------
-" vimrc
-" Mel Boyce <mel@melboyce.com>
-" -----------------------------------------------------------------------------
+" Plugin Manager
+if empty(glob("~/.vim/autoload/plug.vim"))
+    silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    autocmd VimEnter * PlugInstall
+endif
 
-" https://github.com/tpope/vim-pathogen
-call pathogen#infect()
+call plug#begin("~/.vim/plugins")
+
+Plug 'andviro/flake8-vim'
+Plug 'kien/ctrlp.vim'
+Plug 'davidhalter/jedi-vim'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-surround'
+
+call plug#end()
 
 set nocompatible
 set hidden
@@ -163,46 +171,29 @@ set statusline+=%2*%04l,%04v,%p%%\ %l           " offset
 
 " filetypes
 autocmd filetype html setlocal ts=2 sts=2 sw=2 et
+autocmd filetype rst setlocal ts=2 sts=2 sw=2 et
 autocmd filetype js setlocal ts=2 sts=2 sw=2 et
+autocmd filetype yaml setlocal ts=2 sts=2 sw=2 et
 
 
 " autocmd read+new
 autocmd bufread,bufnewfile $home/tmp/mutt-* set textwidth=72
 autocmd bufread,bufnewfile *.wiki set ft=wikipedia
 autocmd bufread,bufnewfile .tmux.conf set ft=tmux
+autocmd bufread,bufnewfile .yaml set ft=yaml
 autocmd bufread,bufnewfile /srv/django/templates/* set ft=htmldjango
 
 
 " flake8
-let g:flake8_max_line_length=120
-let g:flake8_builtins="_,unicode,basestring,file,xrange,reduce,long"
-autocmd BufWritePre *.py call Flake8()
+let g:PyFlakeOnWrite = 1
+let g:PyFlakeForcePyVersion = 3
+let g:PyFlakeCWindow = 10
+let g:PyFlakeMaxLineLength = 120
+let g:PyFlakeCheckers = 'pycodestyle,mccabe,frosted'
+let g:PyFlakeDisabledMessages = 'E701'
 
 " netrw
 let g:netrw_liststyle=3  " tree-mode
-
-" django-tmux
-
-let g:tmux_djangotest_manage_py="python manage.py"
-let g:tmux_djangotest_test_cmd="test"
-let g:tmux_djangotest_test_file_contains="TestCase"
-let g:tmux_djangotest_file_prefix="source ../activate &&"
-let g:tmux_djangotest_tmux_cmd="screen#ScreenShell"
-
-"settings for screen-tmux
-let g:ScreenImpl="Tmux"
-let g:ScreenShellTmuxInitArgs="-2"
-let g:ScreenShellQuitOnVimExit="1"
-map <leader>q :ScreenQuit<cr>
-
-"run test on Ctrl+b
-noremap <C-b> :python run_django_test()<cr>
-
-" arpeggio plugin
-" call arpeggio#load()
-" arpeggio inoremap jk <esc>
-
-let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
 
 " functions
 function! Preserve(command)

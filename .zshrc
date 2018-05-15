@@ -33,7 +33,7 @@ bindkey -e
 
 # variables
 export EDITOR="vim"
-export PAGER="vimpager"
+export PAGER="less"
 export PATH="$PATH:$HOME/bin:$HOME/code/go/bin"
 export GOPATH="$HOME/code/go"
 export TMP="$HOME/tmp"
@@ -42,12 +42,8 @@ export TMPDIR="$TMP"
 export WORKON_HOME=$HOME/.virtualenvs
 export PYTHONDONTWRITEBYTECODE=1
 export MYSQL_PS1="\u@\h [\d]> "
-# export REQUESTS_CA_BUNDLE=/etc/certs/ssl/ca-certificates.crt
-# export BROWSER=/usr/bin/dwb
 
-source /usr/bin/virtualenvwrapper.sh
 source /usr/share/git/completion/git-prompt.sh
-source ~/bin/ssh-agent-startup
 
 # completion
 autoload -Uz compinit
@@ -65,9 +61,6 @@ zstyle ':completion:*:killall:*' force-list always
 zstyle ':completion:*:*:cdr:*:*' menu selection
 
 # # aliases
-alias stash='~/.gem/ruby/2.4.0/gems/atlassian-stash-0.7.0/bin/stash'
-alias fakes3='~/.gem/ruby/2.4.0/gems/fakes3-1.2.0/bin/fakes3'
-alias ns='xinput set-prop 8 291 1'
 alias jc='journalctl --no-pager'
 alias jf='journalctl -fa --no-pager'
 alias mkdir='mkdir -p'
@@ -83,37 +76,13 @@ alias gd='git diff'
 alias path='echo -e ${PATH//:/\\n}'
 alias hc='herbstclient'
 alias spm='sudo pacman'
-alias ussh='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
-alias sshu='ssh -l ubuntu'
-alias ssha='ssh -l ubuntu -i ~/.ssh/saffron_development_jan.pem'
-alias sshc='ssh -l core -i ~/.ssh/sd_preprod_deploy.cer'
 alias chromium='chromium --user-data-dir=~/.config/chromium/'
-alias mkvirtualenv2='mkvirtualenv -p $(which python2.7)'
-alias won='workon'
-alias woff='deactivate && cd'
-alias pi2='pip-2.7 install'
 alias sql='mysql -u root'
 alias grep='grep --color=auto'
 alias pep8out='find . -name "*.py" | grep -ve \/migrations\/ | xargs -n 1 -t pycodestyle --max-line-length 120 >| out'
 alias settitle='printf \\033]0\;\%s\\007'
-alias sentry='sentry --config=~/.config/sentry/conf.py'
-alias cleanbranches='git checkout master && git pull && git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
-alias ec2='aws ec2 describe-instances >| ec2.txt && vim ec2.txt && rm ec2.txt'
-alias ec2-dev='aws --profile=dev ec2 describe-instances >| ec2.txt && vim ec2.txt && rm ec2.txt'
-alias zk='python ~/scripts/zk_cluster.py'
-alias pss='psql -hstaging-voucher.cycjgrxfbwfj.us-west-1.rds.amazonaws.com -U'
-alias psp='psql -hprod-voucher.c6cyx9y8mpev.us-east-1.rds.amazonaws.com -U'
-alias dbstrings='cat ~/code/dbstrings'
 
-alias bootstore='settitle Store && won store && ./manage.py runserver $ip_addr:8000'
-alias bootlocker='settitle Locker && won locker && ./manage.py runserver $ip_addr:8001'
-alias bootbackstage='settitle Backstage && won backstage && ./manage.py runserver $ip_addr:8002'
-alias bootpostman='settitle Postman && won postman && ./manage.py runserver $ip_addr:8003'
-alias bootauth='settitle Auth && won authenticate && ./manage.py runserver $ip_addr:8004'
-alias bootservice='settitle ServiceManager && won service_manager && ./manage.py runserver $ip_addr:8005'
-alias bootcust='settitle CustomerService && won customer_service && ./manage.py runserver $ip_addr:8006'
-alias bootkey='settitle KeyDelivery && won keydelivery && ./manage.py runserver $ip_addr:8008'
-alias bootimage='settitle Image && won image && ./manage.py runserver $ip_addr:8012'
+alias plug-dev='cd ~/code/plug && pipenv shell && clear'
 
 alias tf='sudo tail -f'
 alias df='df -hT'

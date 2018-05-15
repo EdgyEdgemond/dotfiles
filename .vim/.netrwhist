@@ -1,7 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/edgy/code/test_smoke/src/test_smoke/nlapi_service_new'
-let g:netrw_dirhist_2='/home/edgy/code/presentation_layer_api/src/presentation_layer/api'
-let g:netrw_dirhist_3='/home/edgy/code/presentation_layer_api/src/presentation_layer'
-let g:netrw_dirhist_4='/home/edgy/code/presentation_layer_api/tests/unit'
-let g:netrw_dirhist_5='/home/edgy/code/storefront_service/src/apps/api/middleware'
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/edgy/code/plug.demo/plug_demo'
+let g:netrw_dirhist_2='/home/edgy/code/plug/tests/unit/cli'
+let g:netrw_dirhist_3='/home/edgy/code/plug/plug/dashboard'
+let g:netrw_dirhist_4='/home/edgy/code/plug/tests/unit/runner'
+let g:netrw_dirhist_5='/home/edgy/code/plug/plug/runner'
+let g:netrw_dirhist_6='/home/edgy/code/plug/tests/unit'
+let g:netrw_dirhist_7='/home/edgy/code/plug/tests/integration'
+let g:netrw_dirhist_8='/home/edgy/code/plug/tests/integration/cli'
+let g:netrw_dirhist_9='/home/edgy/dotfiles/autostart/autostart'

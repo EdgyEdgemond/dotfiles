@@ -16,10 +16,10 @@ hc emit_hook reload
 hc keyunbind --all
 hc set default_frame_layout 3 # grid
 # keybindings
-Mod=Mod4
+Mod=Mod1
 hc keybind $Mod-Shift-q close
 hc keybind $Mod-Shift-r reload
-hc keybind $Mod-Shift-Mod1-Control-q quit
+hc keybind $Mod-Shift-Mod4-Control-q quit
 hc keybind $Mod-Return spawn urxvt
 #hc keybind $Mod-slash spawn dmenu_run -i -fn "-*-fixed-medium-*-*-*-*-*-*-*-*-*-*-*-*" -nb "#000" -nf "#FFF" -sb"#333"
 hc keybind $Mod-slash spawn dmenu_run -i -p '?'
