@@ -6,7 +6,8 @@ endif
 
 call plug#begin("~/.vim/plugins")
 
-Plug 'andviro/flake8-vim'
+" Plug 'andviro/flake8-vim'
+Plug 'w0rp/ale'
 Plug 'kien/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'tomtom/tcomment_vim'
@@ -20,7 +21,7 @@ set title
 set shell=/bin/zsh
 set autowrite
 set confirm
-set clipboard+=unnamed
+set clipboard=unnamedplus
 set laststatus=2
 set matchtime=5  " this is the default value
 set number
@@ -97,8 +98,9 @@ nnoremap <silent> <leader>$ :call Preserve("%s/\\s\\+$//e")<cr>
 
 " copy into buffer
 vmap <silent> <leader>c "+y
+vmap <silent> <leader>p "+p
 
-" JSON format selection
+" json format selection
 map <leader>j !python -m json.tool<cr>
 
 " Disable command history
@@ -185,12 +187,21 @@ autocmd bufread,bufnewfile /srv/django/templates/* set ft=htmldjango
 
 
 " flake8
-let g:PyFlakeOnWrite = 1
-let g:PyFlakeForcePyVersion = 3
-let g:PyFlakeCWindow = 10
-let g:PyFlakeMaxLineLength = 120
-let g:PyFlakeCheckers = 'pycodestyle,mccabe,frosted'
-let g:PyFlakeDisabledMessages = 'E701'
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_linters = {
+\    'python': ['autopep8', 'black', 'flake8', 'isort', 'prospector', 'pycodestyle', 'pyls', 'pylint', 'yapf']
+\}
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
+let g:ale_python_pycodestyle_options = '--max-line-length=120'
+" let g:PyFlakeOnWrite = 1
+" let g:PyFlakeForcePyVersion = 3
+" let g:PyFlakeCWindow = 10
+" let g:PyFlakeMaxLineLength = 120
+" let g:PyFlakeCheckers = 'pycodestyle,mccabe,frosted'
+" let g:PyFlakeDisabledMessages = 'E701'
 
 " netrw
 let g:netrw_liststyle=3  " tree-mode
