@@ -43,7 +43,7 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PYTHONDONTWRITEBYTECODE=1
 export MYSQL_PS1="\u@\h [\d]> "
 
-source /usr/share/git/completion/git-prompt.sh
+source $HOME/git-prompt.sh
 
 # completion
 autoload -Uz compinit
