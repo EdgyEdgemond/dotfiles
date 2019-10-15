@@ -42,6 +42,7 @@ export TMPDIR="$TMP"
 export WORKON_HOME=$HOME/.virtualenvs
 export PYTHONDONTWRITEBYTECODE=1
 export MYSQL_PS1="\u@\h [\d]> "
+export PM_ENV="dev"
 
 source $HOME/git-prompt.sh
 
@@ -82,14 +83,12 @@ alias grep='grep --color=auto'
 alias pep8out='find . -name "*.py" | grep -ve \/migrations\/ | xargs -n 1 -t pycodestyle --max-line-length 120 >| out'
 alias settitle='printf \\033]0\;\%s\\007'
 
-alias plug-dev='cd ~/code/plug && pipenv shell && clear'
-
 alias tf='sudo tail -f'
 alias df='df -hT'
 
-function clone_bb {
-    git clone git@bitbucket.org:saffrondigital/$1
-}
+# Fuck ubuntu
+alias pipenv='python3 -m pipenv --python 3.6'
+alias pipenv37='python3 -m pipenv --python 3.7'
 
 # alias -g C='| wc -l'
 # alias -g DN=/dev/null
@@ -101,9 +100,14 @@ if [[ '$EUID' == '0' ]]; then
     # these are here just to stop log entries for root user (from sudo calls)
     alias sc='systemctl --no-pager'
     alias spm='pacman'
+    
+
+    # UBUNUTU
+    alias ai='apt install'
 else
     alias sc='sudo systemctl --no-pager'
     alias spm='sudo pacman'
+    alias ai='sudo apt install'
 fi
 alias cg='systemd-cgls'
 alias psc='ps xawf -eo pid,user,cgroup,args'
@@ -211,8 +215,11 @@ key[Menu]=''''
 # mel boyce <mel@melboyce.com>
 
 
+mid=`xinput | grep SteelSeries | awk '{ split($9,a,"=");print(a[2]) }'`
+sid=`xinput list-props $mid | grep "Natural Scrolling Enabled (" | awk '{ split($5,a,"(");split(a[2],a,")");print a[1] }'`
 
-
+echo "xinput set-prop $mid $sid 1"
+exec `xinput set-prop $mid $sid 1`
 
 
 export NVM_DIR="/home/edgy/.nvm"

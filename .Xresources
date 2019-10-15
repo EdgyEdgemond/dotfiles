@@ -1,7 +1,7 @@
 URxvt*transparent:                    true
 URxvt*shading:                        30
 URxvt*scrollBar:                      false
-URxvt*background:                     #000
+URxvt*background:                     [95]#000
 URxvt*urgentOnBell:                   true
 URxvt*boldFont:
 

@@ -85,6 +85,8 @@ hc keybind $Mod-Right spawn mpc next
 hc keybind $Mod-Left spawn mpc prev
 hc keybind $Mod-Up spawn mpc volume +1
 hc keybind $Mod-Down spawn mpc volume -1
+hc keybind $Mod-Shift-Up spawn amixer set Master 1%+
+hc keybind $Mod-Shift-Down spawn amixer set Master 1%-
 hc keybind $Mod-Shift-p spawn mpc toggle
 hc keybind $Mod-Ctrl-l spawn xscreensaver-command -lock 
 
@@ -103,9 +105,10 @@ if [[ -x $HOME/bin/herbstluftwm/closeall ]]; then
     hc keybind $Mod-BackSpace spawn $HOME/bin/herbstluftwm/closeall
 fi
 
-if [[ -x $HOME/randwallpaper.sh ]]; then
-    hc keybind $Mod-Shift-BackSpace spawn $HOME/randwallpaper.sh
+if [[ -x $HOME/.randwallpaper ]]; then
+    hc keybind $Mod-Shift-BackSpace spawn $HOME/.randwallpaper
 fi
+
 # colors
 hc set frame_border_active_color '#222222'
 hc set frame_border_normal_color '#101010'
@@ -113,7 +116,7 @@ hc set frame_bg_transparent 1
 hc set frame_bg_normal_color "$c_grey"
 hc set frame_bg_active_color "$c_violet"
 hc set frame_border_width 0
-hc set window_border_width 2
+hc set window_border_width 1
 hc set window_border_normal_color "$c_grey"
 hc set window_border_active_color "$c_red"
 hc set always_show_frame 1
@@ -136,21 +139,29 @@ hc unlock
 # do multi monitor setup here, e.g.:
 hc remove_monitor 2
 hc remove_monitor 1
-hc move_monitor 0 1920x1080+0+0 0 0 21 1
+hc move_monitor 0 1920x1080+0+0 0 0 24 1
 hc add_monitor 1918x1080+1920+0 2
 # hc add_monitor 1918x1080+3840+0 3
 
-# find the panel
-panel=~/.config/herbstluftwm/panel.sh
-[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
-for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
-    # start it on each monitor
-    $panel $monitor &
-done
+# # find the panel
+# panel=~/.config/herbstluftwm/panel.sh
+# [ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
+# for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
+#     # start it on each monitor
+#     $panel $monitor &
+# done
+
+# # find the panel
+# conky=~/.conkyrc
+# if [ -f "$conky" ]
+#     # start it on each monitor
+#     $conky  &
+# fi
 
 # find the panel
-conky=~/.conkyrc
-if [ -f "$conky" ]
+polybar=~/dotfiles/polybar/config
+echo $polybar
+if [ -f "$polybar" ]; then
     # start it on each monitor
-    $conky  &
+    polybar -c $polybar bottom-bar &
 fi
