@@ -6,12 +6,15 @@ endif
 
 call plug#begin("~/.vim/plugins")
 
-" Plug 'andviro/flake8-vim'
 Plug 'w0rp/ale'
 Plug 'kien/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
+Plug 'hashivim/vim-terraform'
+Plug 'vim-syntastic/syntastic'
+Plug 'juliosueiras/vim-terraform-completion'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -116,6 +119,8 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 
+map <c-s> :wq<cr>
+
 map <space> /
 
 nmap <A-j> mz:m+<cr>
@@ -141,6 +146,8 @@ vmap <down> <nop>
 
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 map <leader>pp :setlocal paste!<cr>
+
+nmap <leader>a <Plug>(coc-codeaction-cursor)
 
 :command WQ wq
 :command Wq wq
@@ -273,3 +280,26 @@ command! -range=% FormatXML <line1>,<line2>call DoFormatXML()
 
 nmap <silent> <leader>x :%FormatXML<CR>
 vmap <silent> <leader>x :FormatXML<CR>
+
+" Terraform
+" Syntastic Config
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" " (Optional)Remove Info(Preview) window
+" set completeopt-=preview
+
+" " (Optional)Hide Info(Preview) window after completions
+" autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" " (Optional) Enable terraform plan to be include in filter
+" let g:syntastic_terraform_tffilter_plan = 1
+"
+" " (Optional) Default: 0, enable(1)/disable(0) plugin's keymapping
+" let g:terraform_completion_keys = 1
+"
+" " (Optional) Default: 1, enable(1)/disable(0) terraform module registry completion
+" let g:terraform_registry_module_completion = 0

@@ -39,12 +39,27 @@ export GOPATH="$HOME/code/go"
 export TMP="$HOME/tmp"
 export TEMP="$TMP"
 export TMPDIR="$TMP"
-export WORKON_HOME=$HOME/.virtualenvs
 export PYTHONDONTWRITEBYTECODE=1
 export MYSQL_PS1="\u@\h [\d]> "
 export PM_ENV="dev"
 
+# Set architecture flags
+export ARCHFLAGS="-arch x86_64"
+# Ensure user-installed binaries take precedence
+export PATH=~/.local/bin:$PATH
+export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/share/python:$PATH
+
+export AUTOENV_FILE_LEAVE=.autoenv.zsh
+source ~/.dotfiles/lib/zsh-autoenv/autoenv.zsh
+
 source $HOME/git-prompt.sh
+
+#Python
+source $HOME/.poetry/env
+
+#Rust
+source $HOME/.cargo/env
 
 # completion
 autoload -Uz compinit
@@ -62,6 +77,8 @@ zstyle ':completion:*:killall:*' force-list always
 zstyle ':completion:*:*:cdr:*:*' menu selection
 
 # # aliases
+alias activate='. .venv/bin/activate'
+alias sz='source ~/.zshrc'
 alias jc='journalctl --no-pager'
 alias jf='journalctl -fa --no-pager'
 alias mkdir='mkdir -p'
@@ -216,11 +233,11 @@ key[Menu]=''''
 
 
 mid=`xinput | grep SteelSeries | awk '{ split($9,a,"=");print(a[2]) }'`
-sid=`xinput list-props $mid | grep "Natural Scrolling Enabled (" | awk '{ split($5,a,"(");split(a[2],a,")");print a[1] }'`
-
-echo "xinput set-prop $mid $sid 1"
-exec `xinput set-prop $mid $sid 1`
+[ ! -z $mid ] && sid=`xinput list-props $mid | grep "Natural Scrolling Enabled (" | awk '{ split($5,a,"(");split(a[2],a,")");print a[1] }'`
+[ ! -z $sid ] && exec `xinput set-prop $mid $sid 1`
 
 
 export NVM_DIR="/home/edgy/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export PATH="$HOME/.poetry/bin:$PATH"

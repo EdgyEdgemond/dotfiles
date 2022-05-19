@@ -4,11 +4,11 @@ ln -sf ~/dotfiles/.Xmodmap ~/
 ln -sf ~/dotfiles/.Xresources ~/
 ln -sf ~/dotfiles/.colours ~/
 ln -sf ~/dotfiles/.conkyrc ~/
+ln -sf ~/dotfiles/git-prompt.sh ~/
 ln -sf ~/dotfiles/.vim ~/.vim
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/.xinitrc ~/
 ln -sf ~/dotfiles/.zshrc ~/
-ln -sf ~/dotfiles/git-prompt.sh ~/
 ln -sf ~/dotfiles/autostart ~/.config/autostart
 ln -sf ~/dotfiles/herbstluftwm ~/.config/herbstluftwm
 ln -sf ~/dotfiles/randwallpaper.sh ~/.randwallpaper
