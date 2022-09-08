@@ -14,6 +14,7 @@ Plug 'tpope/vim-surround'
 Plug 'hashivim/vim-terraform'
 Plug 'vim-syntastic/syntastic'
 Plug 'juliosueiras/vim-terraform-completion'
+Plug 'udalov/kotlin-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
@@ -147,7 +148,7 @@ vmap <down> <nop>
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 map <leader>pp :setlocal paste!<cr>
 
-nmap <leader>a <Plug>(coc-codeaction-cursor)
+nmap <leader>a <Plug>(coc-codeaction-line)
 
 :command WQ wq
 :command Wq wq
@@ -287,6 +288,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_disabled_filetypes=['py']
 
 " " (Optional)Remove Info(Preview) window
 " set completeopt-=preview

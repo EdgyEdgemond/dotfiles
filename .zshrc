@@ -56,7 +56,7 @@ source ~/.dotfiles/lib/zsh-autoenv/autoenv.zsh
 source $HOME/git-prompt.sh
 
 #Python
-source $HOME/.poetry/env
+# source $HOME/.poetry/env
 
 #Rust
 source $HOME/.cargo/env
@@ -239,5 +239,3 @@ mid=`xinput | grep SteelSeries | awk '{ split($9,a,"=");print(a[2]) }'`
 
 export NVM_DIR="/home/edgy/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-export PATH="$HOME/.poetry/bin:$PATH"
