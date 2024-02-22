@@ -6,13 +6,12 @@ endif
 
 call plug#begin("~/.vim/plugins")
 
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'kien/ctrlp.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
 Plug 'hashivim/vim-terraform'
-Plug 'vim-syntastic/syntastic'
 Plug 'juliosueiras/vim-terraform-completion'
 Plug 'udalov/kotlin-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -199,11 +198,15 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_linters = {
-\    'python': ['autopep8', 'black', 'flake8', 'isort', 'prospector', 'pycodestyle', 'pyls', 'pylint', 'yapf']
+\    'python': ['ruff', 'pyright']
 \}
 let g:ale_set_quickfix = 1
 let g:ale_open_list = 1
 let g:ale_python_pycodestyle_options = '--max-line-length=120'
+let g:ale_set_highlights = 0
+" \    'python': ['autopep8', 'black', 'flake8', 'isort', 'prospector', 'pycodestyle', 'pyls', 'pylint', 'yapf']
+
+autocmd BufRead,BufNewFile /home/edgy/code/nortal/neos-superset/* let g:ale_linters = {    'python': ['autopep8', 'black', 'isort', 'prospector', 'pyls', 'pylint', 'yapf']}
 " let g:PyFlakeOnWrite = 1
 " let g:PyFlakeForcePyVersion = 3
 " let g:PyFlakeCWindow = 10
@@ -284,11 +287,11 @@ vmap <silent> <leader>x :FormatXML<CR>
 
 " Terraform
 " Syntastic Config
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_disabled_filetypes=['py']
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_disabled_filetypes=['py']
 
 " " (Optional)Remove Info(Preview) window
 " set completeopt-=preview

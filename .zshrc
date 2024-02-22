@@ -81,6 +81,7 @@ alias activate='. .venv/bin/activate'
 alias sz='source ~/.zshrc'
 alias jc='journalctl --no-pager'
 alias jf='journalctl -fa --no-pager'
+alias kc='kubectl'
 alias mkdir='mkdir -p'
 alias ls='ls --color=auto --human-readable --group-directories-first --classify'
 alias h='history'
@@ -239,3 +240,6 @@ mid=`xinput | grep SteelSeries | awk '{ split($9,a,"=");print(a[2]) }'`
 
 export NVM_DIR="/home/edgy/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+zstyle ':completion:*' menu select
+fpath+=~/.zfunc
