@@ -1,0 +1,4 @@
+dmenu_run
+xrvt-unicode
+
+clone zsh-autoenv

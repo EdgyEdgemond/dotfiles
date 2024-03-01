@@ -14,9 +14,9 @@ setopt pushd_ignore_dups    # ignore duplicate pushes
 stty start undef
 stty stop undef
 
-ip_addr=`hostname -i | cut -c1-12 2>&1`
+#ip_addr=`hostname -i | cut -c1-12 2>&1`
 
-ip_addr=${ip_addr// /}
+#ip_addr=${ip_addr// /}
 # options
 setopt autocd           # no cd required
 setopt appendhistory    # fuck knows
@@ -50,7 +50,11 @@ export PATH=~/.local/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/share/python:$PATH
 
+export AUTOENV_DEBUG=0
+export AUTOENV_FILE_ENTER=.autoenv.zsh
 export AUTOENV_FILE_LEAVE=.autoenv.zsh
+export AUTOENV_HANDLE_LEAVE=1
+export PIPENV_VENV_IN_PROJECT=1
 source ~/.dotfiles/lib/zsh-autoenv/autoenv.zsh
 
 source $HOME/git-prompt.sh
@@ -59,7 +63,7 @@ source $HOME/git-prompt.sh
 # source $HOME/.poetry/env
 
 #Rust
-source $HOME/.cargo/env
+# source $HOME/.cargo/env
 
 # completion
 autoload -Uz compinit
