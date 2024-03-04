@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/edgy/code/market-memo/market-memo-be/src/market_memo/query'
 let g:netrw_dirhist_3='/home/edgy/code/nortal/neos-int-connector-plugin-csv/src/config'
 let g:netrw_dirhist_2='/home/edgy/code/nortal/neos-int-connector-plugin-example-python/.github/workflows'
 let g:netrw_dirhist_1='/home/edgy/code/nortal'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_8='/home/edgy/code/nortal/connector-playground/config/config
 let g:netrw_dirhist_7='/home/edgy/code/nortal/neos-int-connector-plugin-example-golang/cmd'
 let g:netrw_dirhist_6='/home/edgy/code/market-memo/market-memo/migrations'
 let g:netrw_dirhist_5='/home/edgy/code/edgy/astrala/src/astrala/dat'
-let g:netrw_dirhist_4='/home/edgy/code/market-memo/market-memo/src/market_memo/query'
