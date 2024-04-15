@@ -196,7 +196,7 @@ autocmd bufread,bufnewfile /srv/django/templates/* set ft=htmldjango
 " flake8
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_echo_msg_format = '[%linter%] %code%: %s [%severity%]'
 let g:ale_linters = {
 \    'python': ['ruff', 'pyright']
 \}
@@ -204,7 +204,6 @@ let g:ale_set_quickfix = 1
 let g:ale_open_list = 1
 let g:ale_python_pycodestyle_options = '--max-line-length=120'
 let g:ale_set_highlights = 0
-" \    'python': ['autopep8', 'black', 'flake8', 'isort', 'prospector', 'pycodestyle', 'pyls', 'pylint', 'yapf']
 
 autocmd BufRead,BufNewFile /home/edgy/code/nortal/neos-superset/* let g:ale_linters = {    'python': ['autopep8', 'black', 'isort', 'prospector', 'pyls', 'pylint', 'yapf']}
 " let g:PyFlakeOnWrite = 1
