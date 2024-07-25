@@ -86,6 +86,7 @@ alias sz='source ~/.zshrc'
 alias jc='journalctl --no-pager'
 alias jf='journalctl -fa --no-pager'
 alias kc='kubectl'
+alias nc='nexusctl'
 alias mkdir='mkdir -p'
 alias ls='ls --color=auto --human-readable --group-directories-first --classify'
 alias h='history'
@@ -143,6 +144,8 @@ alias u='whoami'
 # alias tree='tree -CF'
 alias s='ssh'
 
+# MESHX Alias
+alias mxpoetry="GIT_SSH_COMMAND='ssh -i ~/.ssh/id_meshx' poetry"
 # # optional app aliases
 # [[ -x =task ]] && alias t='task'
 
