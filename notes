@@ -1,4 +1,5 @@
 dmenu_run
 xrvt-unicode
 
+mkdir lib
 clone zsh-autoenv
