@@ -1,3 +1,9 @@
+install NetworkManager and enable
+setup grub and gen config
+
+xorg xorg-init xterm xorg-xinput conky git base-devel herbstluftwm
+install trizen
+
 dmenu_run
 xrvt-unicode
 
